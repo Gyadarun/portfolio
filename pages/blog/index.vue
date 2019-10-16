@@ -19,7 +19,7 @@ export default {
   },
   asyncData(context) {
     return context.app.$storyapi.get('cdn/stories', {
-      version: 'draft',
+      version: context.isDev ? "draft" : "oublished",
       starts_with: 'blog/'
     }).then(res => {
       return {
@@ -34,24 +34,6 @@ export default {
       };
     });
   }
-  // data() {
-  //   return {
-  //     posts: [
-  //       {
-  //         title: 'title',
-  //         previewText: 'preview',
-  //         thumbnailUrl: 'https://static.mmzstatic.com/wp-content/uploads/2018/05/manquer-a-son-chat.jpg',
-  //         id: '1'
-  //       },
-  //       {
-  //         title: 'title dos',
-  //         previewText: 'preview dos',
-  //         thumbnailUrl: 'https://static.mmzstatic.com/wp-content/uploads/2018/05/manquer-a-son-chat.jpg',
-  //         id: '2'
-  //       }
-  //     ]
-  //   }
-  // }
 }
 </script>
 
@@ -62,6 +44,7 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  flex-wrap: wrap;
 }
 @media (min-width: 35rem) {
   #posts {
